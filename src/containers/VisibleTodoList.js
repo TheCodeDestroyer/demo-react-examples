@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleTodo } from '../actions/todoActions'
+import { toggleTodo } from '../actions/index'
 import TodoList from '../components/todo/TodoList'
 
 const getVisibleTodos = (todos, filter) => {
