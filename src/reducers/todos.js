@@ -1,6 +1,6 @@
 import {TOGGLE_TODO, ADD_TODO} from '../actions/action';
 
-const todo = (state = {}, action) => {
+const todo = (_todo = {}, action) => {
     switch (action.type) {
         case ADD_TODO:
             return {
@@ -9,32 +9,32 @@ const todo = (state = {}, action) => {
                 completed: false
             };
         case TOGGLE_TODO:
-            if (state.id !== action.id) {
-                return state
+            if (_todo.id !== action.id) {
+                return _todo
             }
 
-            return Object.assign({}, state, {
-                completed: !state.completed
+            return Object.assign({}, _todo, {
+                completed: !_todo.completed
             });
 
         default:
-            return state
+            return _todo
     }
 };
 
-const todos = (state = [], action) => {
+const todos = (_todos = [], action) => {
     switch (action.type) {
         case ADD_TODO:
             return [
-                ...state,
+                ..._todos,
                 todo(undefined, action)
             ];
         case TOGGLE_TODO:
-            return state.map(t =>
+            return _todos.map(t =>
                 todo(t, action)
             );
         default:
-            return state
+            return _todos
     }
 };
 

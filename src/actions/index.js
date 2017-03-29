@@ -1,6 +1,6 @@
 import {ADD_TODO, SET_VISIBILITY_FILTER, TOGGLE_TODO} from './action';
 
-let nextTodoId = 0;
+let nextTodoId = 2;
 
 export const addTodo = (text) => {
     return {
