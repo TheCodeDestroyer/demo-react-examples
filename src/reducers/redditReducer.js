@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux'
+import {combineReducers} from 'redux';
 import {SELECT_SUBREDDIT, INVALIDATE_SUBREDDIT, REQUEST_POSTS, RECEIVE_POSTS} from '../actions/subredditActions';
 
 const defaultPostState = {
@@ -12,7 +12,7 @@ const selectedSubreddit = (state = 'reactjs', action) => {
         case SELECT_SUBREDDIT:
             return action.subreddit;
         default:
-            return state
+            return state;
     }
 };
 
@@ -35,7 +35,7 @@ const posts = (state = defaultPostState, action) => {
                 lastUpdated: action.receivedAt
             });
         default:
-            return state
+            return state;
     }
 };
 
@@ -48,7 +48,7 @@ const postsBySubreddit = (state = {}, action) => {
                 [action.subreddit]: posts(state[action.subreddit], action)
             });
         default:
-            return state
+            return state;
     }
 };
 
@@ -57,4 +57,4 @@ const rootReducer = combineReducers({
     selectedSubreddit
 });
 
-export default rootReducer
+export default rootReducer;

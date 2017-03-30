@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, {Component, PropTypes} from 'react';
 
 export default class Picker extends Component {
     render() {
@@ -16,7 +16,7 @@ export default class Picker extends Component {
                     }
                 </select>
             </span>
-        )
+        );
     }
 }
 

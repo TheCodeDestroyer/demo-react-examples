@@ -6,21 +6,21 @@ export const selectSubreddit = (subreddit) => {
     return {
         type: SELECT_SUBREDDIT,
         subreddit
-    }
+    };
 };
 
 export const invalidateSubreddit = (subreddit) => {
     return {
         type: INVALIDATE_SUBREDDIT,
         subreddit
-    }
+    };
 };
 
 const requestPosts = (subreddit) => {
     return {
         type: REQUEST_POSTS,
         subreddit
-    }
+    };
 };
 
 const receivePosts = (subreddit, json) => {
@@ -29,7 +29,7 @@ const receivePosts = (subreddit, json) => {
         subreddit,
         posts: json.data.children.map(child => child.data),
         receivedAt: Date.now()
-    }
+    };
 };
 
 const fetchPosts = (subreddit) => {
@@ -37,25 +37,26 @@ const fetchPosts = (subreddit) => {
         dispatch(requestPosts(subreddit));
         return fetch(`https://www.reddit.com/r/${subreddit}.json`)
         .then(response => response.json())
-        .then(json => dispatch(receivePosts(subreddit, json)))
-    }
+        .then(json => dispatch(receivePosts(subreddit, json)));
+    };
 };
 
 const shouldFetchPosts = (state, subreddit) => {
     const posts = state.postsBySubreddit[subreddit];
     if (!posts) {
-        return true
-    } else if (posts.isFetching) {
-        return false
-    } else {
-        return posts.didInvalidate
+        return true;
     }
+    else if (posts.isFetching) {
+        return false;
+    }
+    return posts.didInvalidate;
 };
 
 export const fetchPostsIfNeeded = (subreddit) => {
     return (dispatch, getState) => {
         if (shouldFetchPosts(getState(), subreddit)) {
-            return dispatch(fetchPosts(subreddit))
+            return dispatch(fetchPosts(subreddit));
         }
-    }
+        return null;
+    };
 };

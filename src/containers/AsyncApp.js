@@ -8,32 +8,19 @@ class AsyncApp extends Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.handleRefreshClick = this.handleRefreshClick.bind(this)
+        this.handleRefreshClick = this.handleRefreshClick.bind(this);
     }
 
     componentDidMount() {
         const { dispatch, selectedSubreddit } = this.props;
-        dispatch(fetchPostsIfNeeded(selectedSubreddit))
+        dispatch(fetchPostsIfNeeded(selectedSubreddit));
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.selectedSubreddit !== prevProps.selectedSubreddit) {
             const { dispatch, selectedSubreddit } = this.props;
-            dispatch(fetchPostsIfNeeded(selectedSubreddit))
+            dispatch(fetchPostsIfNeeded(selectedSubreddit));
         }
-    }
-
-    handleChange(nextSubreddit) {
-        this.props.dispatch(selectSubreddit(nextSubreddit));
-        this.props.dispatch(fetchPostsIfNeeded(nextSubreddit))
-    }
-
-    handleRefreshClick(e) {
-        e.preventDefault();
-
-        const { dispatch, selectedSubreddit } = this.props;
-        dispatch(invalidateSubreddit(selectedSubreddit));
-        dispatch(fetchPostsIfNeeded(selectedSubreddit));
     }
 
     render() {
@@ -51,7 +38,7 @@ class AsyncApp extends Component {
                     </span>
                     }
                     {!isFetching &&
-                    <a href='#'
+                    <a href="#"
                        onClick={this.handleRefreshClick}>
                         Refresh
                     </a>
@@ -70,6 +57,19 @@ class AsyncApp extends Component {
                 }
             </div>
         );
+    }
+
+    handleChange(nextSubreddit) {
+        this.props.dispatch(selectSubreddit(nextSubreddit));
+        this.props.dispatch(fetchPostsIfNeeded(nextSubreddit));
+    }
+
+    handleRefreshClick(e) {
+        e.preventDefault();
+
+        const { dispatch, selectedSubreddit } = this.props;
+        dispatch(invalidateSubreddit(selectedSubreddit));
+        dispatch(fetchPostsIfNeeded(selectedSubreddit));
     }
 }
 
@@ -97,7 +97,7 @@ const mapStateToProps = (state) => {
         posts,
         isFetching,
         lastUpdated
-    }
+    };
 };
 
 export default connect(mapStateToProps)(AsyncApp);

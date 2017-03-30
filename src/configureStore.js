@@ -13,7 +13,7 @@ const configureStore = (preloadedState) => {
             thunkMiddleware,
             loggerMiddleware
         )
-    )
+    );
 };
 
 export default configureStore;
