@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, {PropTypes} from 'react';
 
 const Todo = ({ onClick, completed, text }) => (
     <li
@@ -17,4 +17,4 @@ Todo.propTypes = {
     text: PropTypes.string.isRequired
 };
 
-export default Todo
+export default Todo;

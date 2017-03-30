@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react'
+import React, {PropTypes} from 'react';
 
 const Link = ({ active, children, onClick }) => {
     if (active) {
-        return <span>{children}</span>
+        return <span>{children}</span>;
     }
 
     return (
@@ -14,7 +14,7 @@ const Link = ({ active, children, onClick }) => {
         >
             {children}
         </a>
-    )
+    );
 };
 
 Link.propTypes = {
@@ -23,4 +23,4 @@ Link.propTypes = {
     onClick: PropTypes.func.isRequired
 };
 
-export default Link
+export default Link;

@@ -10,7 +10,7 @@ const todo = (_todo = {}, action) => {
             };
         case TOGGLE_TODO:
             if (_todo.id !== action.id) {
-                return _todo
+                return _todo;
             }
 
             return Object.assign({}, _todo, {
@@ -18,7 +18,7 @@ const todo = (_todo = {}, action) => {
             });
 
         default:
-            return _todo
+            return _todo;
     }
 };
 
@@ -34,8 +34,8 @@ const todos = (_todos = [], action) => {
                 todo(t, action)
             );
         default:
-            return _todos
+            return _todos;
     }
 };
 
-export default todos
+export default todos;
